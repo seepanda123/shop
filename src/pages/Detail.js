@@ -1,5 +1,5 @@
 
-import styles from './Detail.css';
+import styles from './detail.css';
 
 export default function() {
   return (
