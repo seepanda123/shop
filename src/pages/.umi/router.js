@@ -12,14 +12,19 @@ const routes = [
     component: require('../../layouts/index.js').default,
     routes: [
       {
-        path: '/Detail',
+        path: '/detail',
         exact: true,
-        component: require('../Detail.js').default,
+        component: require('../detail.js').default,
       },
       {
         path: '/',
         exact: true,
         component: require('../index.js').default,
+      },
+      {
+        path: '/list',
+        exact: true,
+        component: require('../list.js').default,
       },
       {
         component: () =>

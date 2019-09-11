@@ -1,4 +1,41 @@
+html{
+  height:100%;
+  background-color: #f4f4f4;
+}
+a{
+  text-decoration: none;
+  color:#000;
+}
+li{
+  list-style: none;
+}
+.nav {
 
-.normal {
-  background: #798FF2;
+  width:1170px;
+  height: 30px;
+  line-height: 30px;
+  padding: 20px 0 10px;
+  font-size: 14px;
+  color: #333;
+  margin: 0 auto;
+}
+.main{
+  width:1170px;
+  height:800px;
+  background:#fff;
+  margin:0 auto;
+}
+.img{
+  width:400px;
+  height:400px;
+  float: left;
+}
+.info{
+  float: left;
+}
+.mt{
+
+}
+.mb{
+
 }
