@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import styles from './detail.css';
 import {Breadcrumb,Row, Col } from 'antd';
-
-
 export default class detail extends Component {
   constructor(props) {
     super(props);
