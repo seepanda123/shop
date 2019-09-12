@@ -12,9 +12,19 @@ const routes = [
     component: require('../../layouts/index.js').default,
     routes: [
       {
-        path: '/detail',
+        path: '/addCart',
         exact: true,
-        component: require('../detail.js').default,
+        component: require('../addCart.js').default,
+      },
+      {
+        path: '/cart',
+        exact: true,
+        component: require('../cart.js').default,
+      },
+      {
+        path: '/Detail',
+        exact: true,
+        component: require('../Detail.js').default,
       },
       {
         path: '/',
