@@ -1,6 +1,9 @@
 import { Carousel,Menu, Icon,PageHeader, Tag, Button, Statistic, Descriptions, Row, Col } from 'antd';
 import styles from './index.css';
+<<<<<<< HEAD
 import 'antd/dist/antd.css';
+=======
+>>>>>>> 1340e4ef27bde6969a7b08f79a35092ac4814173
 import Link from 'umi/link';
 const { SubMenu } = Menu;
 
