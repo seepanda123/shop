@@ -60,6 +60,7 @@ export default function(props) {
           className={styles.bg}
           onTitleClick={(e)=>{
             console.log(e)
+            props.history.push("./list")
           }}
         >
           
@@ -80,6 +81,10 @@ export default function(props) {
             </span>
           }
           className={styles.bg}
+          onTitleClick={(e)=>{
+            console.log(e)
+            props.history.push("./list")
+          }}
         >
           <Menu.ItemGroup title="易办公" className={styles.box} >
             <p className={styles.tit}>办公用品</p>
@@ -97,6 +102,10 @@ export default function(props) {
             </span>
           }
           className={styles.bg}
+          onTitleClick={(e)=>{
+            console.log(e)
+            props.history.push("./list")
+          }}
         >
           <Menu.ItemGroup title="职人必备" className={styles.box}>
               <p className={styles.tit}>office饮品</p>
@@ -114,6 +123,10 @@ export default function(props) {
             </span>
           }
           className={styles.bg}
+          onTitleClick={(e)=>{
+            console.log(e)
+            props.history.push("./list")
+          }}
         >
           <Menu.ItemGroup title="精选优物" className={styles.box}>
               <p className={styles.tit}>精选优物</p>
