@@ -63,14 +63,13 @@ export default class detail extends Component {
     )
   }
   componentDidMount(){
+    console.log(this.props.location.state)
     let arr = []
     Api.getProlist({uid:23255,pagesize:50}).then(data => {
-      console.log(data.data)
       arr = (data.data).slice(22,28);
       this.setState({
         prolist:arr
       })
-      console.log(arr)
     })
   }
 }
