@@ -22,6 +22,11 @@ const routes = [
         component: require('../index.js').default,
       },
       {
+        path: '/list',
+        exact: true,
+        component: require('../list.js').default,
+      },
+      {
         component: () =>
           React.createElement(
             require('C:/Users/Administrator/AppData/Roaming/npm/node_modules/umi/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
