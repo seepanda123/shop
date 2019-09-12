@@ -42,8 +42,6 @@ export default class detail extends Component {
         </div>
       </div>
         <div className={styles.tiao}>
-        
-               
           <Row gutter={16}>
             {
               this.state.prolist.map((item,i)=>{
@@ -53,7 +51,7 @@ export default class detail extends Component {
                   <img className={styles.img} src={item.pimg}/>
                   <p className={styles.jiage}>￥{item.pprice}</p>
                   <p className={styles.desc}>{item.pname}</p>
-                  </div>
+                </div>
                 </Col>
                 )
               })
