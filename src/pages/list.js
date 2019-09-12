@@ -29,7 +29,7 @@ export default class detail extends Component {
               <a>鲜为人知</a>
               <a>源来如此</a>
             </Col>
-            <Col span={1} pull={23}>分类：</Col>
+            <Col span={1} pull={23}>标签：</Col>
           </Row>
           <Row type="flex" justify="space-around" align="middle">
             <Col span={23} push={1}>
@@ -42,11 +42,7 @@ export default class detail extends Component {
         </div>
       </div>
         <div className={styles.tiao}>
-<<<<<<< HEAD
-        
-               
-=======
->>>>>>> bdb66d71c7df525e650a792c639e1963a545ebfc
+
           <Row gutter={16}>
             {
               this.state.prolist.map((item,i)=>{
@@ -56,11 +52,7 @@ export default class detail extends Component {
                   <img className={styles.img} src={item.pimg}/>
                   <p className={styles.jiage}>￥{item.pprice}</p>
                   <p className={styles.desc}>{item.pname}</p>
-<<<<<<< HEAD
-                  </div>
-=======
                 </div>
->>>>>>> bdb66d71c7df525e650a792c639e1963a545ebfc
                 </Col>
                 )
               })
