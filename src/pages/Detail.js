@@ -4,9 +4,12 @@ import {Breadcrumb,Row, Col ,Select ,InputNumber ,Button} from 'antd';
 
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> bdb66d71c7df525e650a792c639e1963a545ebfc
 const { Option } = Select;
 const provinceData = ['Zhejiang', 'Jiangsu'];
 const cityData = {
