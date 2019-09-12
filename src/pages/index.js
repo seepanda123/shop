@@ -15,9 +15,7 @@ export default function(props) {
   const [list4,setList4] = useState([]);
 
   useEffect(() => {
-    console.log(123)
     api.getProlist({uid:23255,pagesize:50}).then((data)=>{
-      console.log(data.data)
       let list1 = data.data.slice(-6)
       let list2 = data.data.slice(15,22)
       let list3 = data.data.slice(14,15)
@@ -59,8 +57,7 @@ export default function(props) {
           }
           className={styles.bg}
           onTitleClick={(e)=>{
-            console.log(e)
-            props.history.push("./list")
+            props.history.push('/list',e.key)
           }}
         >
           
@@ -82,8 +79,7 @@ export default function(props) {
           }
           className={styles.bg}
           onTitleClick={(e)=>{
-            console.log(e)
-            props.history.push("./list")
+            props.history.push('/list', e.key)
           }}
         >
           <Menu.ItemGroup title="易办公" className={styles.box} >
@@ -103,8 +99,7 @@ export default function(props) {
           }
           className={styles.bg}
           onTitleClick={(e)=>{
-            console.log(e)
-            props.history.push("./list")
+            props.history.push('/list', e.key)
           }}
         >
           <Menu.ItemGroup title="职人必备" className={styles.box}>
@@ -124,8 +119,7 @@ export default function(props) {
           }
           className={styles.bg}
           onTitleClick={(e)=>{
-            console.log(e)
-            props.history.push("./list")
+            props.history.push('/list', e.key)
           }}
         >
           <Menu.ItemGroup title="精选优物" className={styles.box}>
