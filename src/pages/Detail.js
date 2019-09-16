@@ -103,13 +103,13 @@ export default class detail extends Component {
             </div>
             {/* 按钮 */}
             <div className={styles.btn}>
-              <Link to={{pathname:"/settlement",state:{pid:this.xq.pid}}}
+              {/* <Link to={{pathname:"/settlement",state:{pid:this.xq.pid}}} */}
               
               <Button type="primary" size={size} ghost="true" className={styles.zbuy} onClick={this.rightnow.bind(this)}>立即购买</Button>
               <Button type="primary" size={size} className={styles.buy} onClick={this.addcart.bind(this)}>加入购物车</Button>
             </div>
-          </Col>
         </Row>
+          </Col> 
           </div>
           {/* 商品详情 */}
           <div className={styles.desc}>
