@@ -41,6 +41,11 @@ export default class detail extends Component {
     this.setState({ size: e.target.value });
   };
 
+
+  componentDidMount(){
+    console.log(this.props.location.state.pid)
+  }
+
   render() {
     const { cities } = this.state; 
     const { size } = this.state;

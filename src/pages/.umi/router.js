@@ -37,6 +37,11 @@ const routes = [
         component: require('../list.js').default,
       },
       {
+        path: '/settlement',
+        exact: true,
+        component: require('../settlement.js').default,
+      },
+      {
         component: () =>
           React.createElement(
             require('C:/Users/Panda/AppData/Roaming/npm/node_modules/umi/node_modules/_umi-build-dev@1.11.3@umi-build-dev/lib/plugins/404/NotFound.js')
