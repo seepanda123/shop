@@ -67,7 +67,7 @@ export default class detail extends Component {
 
 
 
-       <div>
+      <div>
         <Row className={styles.main}>
           <Col span={8} push={1}>
             <img className={styles.img} src={this.state.xq.pimg}/>
@@ -108,14 +108,13 @@ export default class detail extends Component {
             </div>
             {/* 按钮 */}
             <div className={styles.btn}>
-              {/* <Link to={{pathname:"/settlement",state:{pid:this.xq.pid}}} */}
               
               <Button type="primary" size={size} ghost="true" className={styles.zbuy} onClick={this.rightnow.bind(this)}>立即购买</Button>
               <Button type="primary" size={size} className={styles.buy} onClick={this.addcart.bind(this)}>加入购物车</Button>
             </div>
-        </Row>
           </Col> 
-          </div>
+        </Row>
+      </div>
           {/* 商品详情 */}
           <div className={styles.desc}>
             <p className={styles.shop}>商品详情：</p>
