@@ -23,12 +23,12 @@
 .row{
   margin-top:20px;
   width:590px;
-  
+
 }
 .price{
   width:590px;
   height:75px;
-  border-bottom: 1px dashed #333; 
+  border-bottom: 1px dashed #333;
 }
 .original{
   min-height: 35px;
@@ -124,6 +124,9 @@
 }
 .desc1{
   font-size: 14px;
+  color:black;
+  width:250px; 
+  margin-left:4px;
 }
 .shop{
   font-size: 20px;
