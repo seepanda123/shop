@@ -5,22 +5,35 @@ import Link from 'umi/link';
 import React,{useState,useEffect} from 'react';
 import api from '../api/api_pro';
 
-//修改数量
-function onChange(value) {
-  console.log(value);
-}
+
 
 
 export default function(props) {
-
   //取购物车数据
   const [cartList,setCartList] = useState([]);
+  //多选
+  const [flag,setFlag] = useState('true')
 
   useEffect(() => {
     api.getCartlist({id:2019}).then((data)=>{
       setCartList(data.data)
     })
   }, [props.cartList])
+
+
+  //修改数量
+  function onChange(pid,value) {
+    console.log(pid,value);
+    api.updatedcartnum({
+      uid:2019,
+      pid:pid,
+      pnum:value
+    }).then((data)=>{
+      api.getCartlist({id:2019}).then((data)=>{
+        setCartList(data.data)
+      })
+    })
+  }
 
 
   //删除商品
@@ -70,7 +83,7 @@ function del(pid){
           <tbody>
             <tr>
               <td width="30">
-                <input type="checkbox" />
+                <input type="checkbox" checked={flag}/>
               </td>
               <td width="420">全选</td>
               <td width="145" className={styles.txtC}>单价（元）</td>
@@ -99,9 +112,9 @@ function del(pid){
                     <td width="325">{item.pname}</td>
                     <td width="140" className={styles.txtC}>￥{item.pprice}</td>
                     <td width="170" className={styles.txtC}>
-                      <InputNumber size="small" min={1} max={100000} defaultValue={item.pnum} onChange={onChange} />
+                      <InputNumber size="small" min={1} max={100000} defaultValue={item.pnum} onChange={onChange.bind(props,item.pid)} />
                     </td>
-                    <td width="140" className={styles.txtC}>￥{item.pprice}</td>
+                    <td width="140" className={styles.txtC}>￥{item.pprice*item.pnum}</td>
                     <td className={styles.txtC}>
                       <Button  onClick={del.bind(props,item.pid)}>删除</Button>
                     </td>
@@ -115,7 +128,7 @@ function del(pid){
 
         {/* 总价 */}
         <div className={styles.count}>
-          <input type="checkbox"/> 全选
+          <input type="checkbox" checked={flag}/> 全选
           <div className={styles.merge1}>
             已选商品
             <span className={styles.clRed}> 1 </span> 件 
