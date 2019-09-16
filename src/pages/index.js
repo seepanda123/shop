@@ -150,12 +150,12 @@ export default function(props) {
         {list1.map((data,i)=>{
           return(
             <dd key={i}>
-              <Link target="_blank" to="./detail">
+              <Link to={{pathname:"/detail",state:{pid:data.pid}}}>
                 <img src={data.pimg}/>
                 <div className={styles.title}>{data.pname}</div>
                 <div className={styles.price}>￥<span className={styles.font20}>{data.pprice}</span></div>
               </Link>
-              <Link className={styles.buy} target="_blank" to="./detail">
+              <Link className={styles.buy} to={{pathname:"/detail",state:{pid:data.pid}}}>
                 <Icon type="shopping-cart" />
                 立即购买
               </Link>
@@ -183,12 +183,12 @@ export default function(props) {
         {list2.map((data,i)=>{
           return(
             <dd key={i}>
-              <Link target="_blank" to="./detail">
+              <Link to={{pathname:"/detail",state:{pid:data.pid}}}>
                 <img src={data.pimg}/>
                 <div className={styles.title}>{data.pname}</div>
                 <div className={styles.price}>￥<span className={styles.font20}>{data.pprice}</span></div>
               </Link>
-              <Link className={styles.buy} target="_blank" to="./detail">
+              <Link className={styles.buy} to={{pathname:"/detail",state:{pid:data.pid}}}>
                 <Icon type="shopping-cart" />
                 立即购买
               </Link>
@@ -217,12 +217,12 @@ export default function(props) {
         {list3.map((data,i)=>{
           return(
             <dd key={i}>
-              <Link target="_blank" to="./detail">
+              <Link to={{pathname:"/detail",state:{pid:data.pid}}}>
                 <img src={data.pimg}/>
                 <div className={styles.title}>{data.pname}</div>
                 <div className={styles.price}>￥<span className={styles.font20}>{data.pprice}</span></div>
               </Link>
-              <Link className={styles.buy} target="_blank" to="./detail">
+              <Link className={styles.buy} to={{pathname:"/detail",state:{pid:data.pid}}}>
                 <Icon type="shopping-cart" />
                 立即购买
               </Link>
@@ -251,12 +251,12 @@ export default function(props) {
         {list4.map((data,i)=>{
           return(
             <dd key={i}>
-              <Link target="_blank" to="./detail">
+              <Link to={{pathname:"/detail",state:{pid:data.pid}}}>
                 <img src={data.pimg}/>
                 <div className={styles.title}>{data.pname}</div>
                 <div className={styles.price}>￥<span className={styles.font20}>{data.pprice}</span></div>
               </Link>
-              <Link className={styles.buy} target="_blank" to="./detail">
+              <Link className={styles.buy} to={{pathname:"/detail",state:{pid:data.pid}}}>
                 <Icon type="shopping-cart" />
                 立即购买
               </Link>
