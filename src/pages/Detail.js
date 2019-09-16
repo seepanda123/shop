@@ -1,6 +1,3 @@
-
-import styles from './Detail.css';
-
 export default function() {
   return (
     <div className={styles.normal}>
