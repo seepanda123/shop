@@ -46,9 +46,11 @@
 /* 列表 */
 .more{
   padding: 0 10px;
+  line-height: 20px;
+  color: #000
 }
 .mores{
-  color: #d8cccc;
+  color: #999;
   padding: 0 10px;
 }
 .homeGood{
@@ -70,8 +72,8 @@
 }
 .homeGood dd{
     float: left;
-    width: 224px;
-    height: 279px;
+    width: 226px;
+    height: 281px;
     border: 1px solid #eee;
     margin-right: -1px;
     margin-bottom: -1px;
