@@ -22,9 +22,9 @@ const routes = [
         component: require('../cart.js').default,
       },
       {
-        path: '/Detail',
+        path: '/detail',
         exact: true,
-        component: require('../Detail.js').default,
+        component: require('../detail.js').default,
       },
       {
         path: '/',
