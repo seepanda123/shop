@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styles from './detail.css';
+import Api from '../api/api_pro'
+import Link from 'umi/link';
 import {Breadcrumb,Row, Col ,Select ,InputNumber ,Button} from 'antd';
 
 
@@ -17,6 +19,9 @@ export default class detail extends Component {
       cities: cityData[provinceData[0]],
       secondCity: cityData[provinceData[0]][0],
       size: 'large',
+      xq:'',
+      prolist:[],
+      pnum:1
     }
   }
   handleProvinceChange = value => {
@@ -34,37 +39,44 @@ export default class detail extends Component {
   };
   onChange(value){
     console.log('changed', value);
+    this.setState({
+      pnum:value
+    })
   }
-  
   handleSizeChange = e => {
     this.setState({ size: e.target.value });
   };
 
   render() {
-    const { cities } = this.state; 
+    const { cities } = this.state;
     const { size } = this.state;
-    return (
+      return (
       <div>
       <Breadcrumb className={styles.nav} separator=">">
         <Breadcrumb.Item>幸福商城</Breadcrumb.Item>
         <Breadcrumb.Item href="">原产地</Breadcrumb.Item>
         <a href="">{this.state.dz}</a>
       </Breadcrumb>
-      <div>
+
+
+
+
+
+       <div>
         <Row className={styles.main}>
           <Col span={8} push={1}>
-            <img className={styles.img} src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568177396928&di=8b1edda934ce4346625cb45e0758ca41&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fq_70%2Cc_zoom%2Cw_640%2Fupload%2F20170124%2Ffcc0c22b9f1d4581accf400b0fab5818_th.jpg"/>
+            <img className={styles.img} src={this.state.xq.pimg}/>
           </Col>
           <Col span={16} push={3} className={styles.row}>
-            <h2>幸福商城原产地—海南红心木瓜幸福商城原产地—海南红心</h2>
+            <h2>{this.state.xq.pname}</h2>
             <div className={styles.price}>
               <div className={styles.original}>
                 <span className={styles.lable}>现&nbsp;&nbsp;&nbsp;&nbsp;价：</span>
-                <span className={styles.gray}>50</span>
+                <span className={styles.gray}>{this.state.xq.pprice}</span>
               </div>
               <div className={styles.original}>
                 <span className={styles.lable}>原&nbsp;&nbsp;&nbsp;&nbsp;价：</span>
-                <span className={styles.throu}>60</span></div>
+                <span className={styles.throu}>{parseInt(this.state.xq.pprice)+10}</span></div>
             </div>
             <div className={styles.adress}>
               <div className={styles.original}>
@@ -82,63 +94,102 @@ export default class detail extends Component {
               </div>
               <div className={styles.original}>
                 <span className={styles.lable}>运&nbsp;&nbsp;&nbsp;&nbsp;费：</span>
-                <span className={styles.throug}>{0.00}，支持200元免运费</span>
+                <span className={styles.throug}>0</span>
               </div>
             </div>
             <div className={styles.original1}>
               <span className={styles.lable}>数&nbsp;&nbsp;&nbsp;&nbsp;量：</span>
               <InputNumber size="large" min={1} max={100000} defaultValue={1} onChange={this.onChange.bind(this)} />
             </div>
+            {/* 按钮 */}
             <div className={styles.btn}>
-              <Button type="primary" size={size} ghost="true" className={styles.zbuy}>直接购买</Button>
-              <Button type="primary" size={size} className={styles.buy}>加入购物车</Button>
+              <Link to={{pathname:"/settlement",state:{pid:this.xq.pid}}}
+              
+              <Button type="primary" size={size} ghost="true" className={styles.zbuy} onClick={this.rightnow.bind(this)}>立即购买</Button>
+              <Button type="primary" size={size} className={styles.buy} onClick={this.addcart.bind(this)}>加入购物车</Button>
             </div>
           </Col>
         </Row>
           </div>
+          {/* 商品详情 */}
           <div className={styles.desc}>
             <p className={styles.shop}>商品详情：</p>
-            <div className={styles.tit}>幸福商城原产地—海南红心木瓜幸福商城原产地—海南红心</div>
+            <div className={styles.tit}>{this.state.xq.pname}</div>
             <div className={styles.ptext}>
-              产品产地：澳大利亚<br/>
-              产品规格：眼肉牛排500g、西冷牛排1000g、菲力牛排500g、牛腩肉1000g、
-              嫩肩肉2000g、米龙2000g、牛胸1000g、牛腱1000g、腿肉1000g
+              {this.state.xq.pdesc}
             </div>
           </div>
+
+
+
+
+
+
+
           <div className={styles.tiao}>
             <p className={styles.shop}>热门推荐：</p>
           <Row gutter={16}>
-            <Col className="gutter-row" span={6}>
-              <div className={styles.gutterbox}>
-                <img className={styles.img1} src='https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1568164077&di=b4607c0e3c24091edc7bdaf1e0d3d662&src=http://n.sinaimg.cn/sinacn10/354/w700h454/20180409/b024-fyvtmxe3129122.jpg'/>
-                <p className={styles.price1}>￥{50.00}</p>
-                <p className={styles.desc1}>幸福商城原产地—海南红心木瓜幸福商城原产地—海南红心</p>
-                </div>
-            </Col>
-            <Col className="gutter-row" span={6}>
-              <div className={styles.gutterbox}>
-                <img className={styles.img1} src='https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1568164077&di=b4607c0e3c24091edc7bdaf1e0d3d662&src=http://n.sinaimg.cn/sinacn10/354/w700h454/20180409/b024-fyvtmxe3129122.jpg'/>
-                <p className={styles.price1}>￥{50.00}</p>
-                <p className={styles.desc1}>幸福商城原产地—海南红心木瓜幸福商城原产地—海南红心</p>
-                </div>
-            </Col>
-            <Col className="gutter-row" span={6}>
-              <div className={styles.gutterbox}>
-                <img className={styles.img1} src='https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1568164077&di=b4607c0e3c24091edc7bdaf1e0d3d662&src=http://n.sinaimg.cn/sinacn10/354/w700h454/20180409/b024-fyvtmxe3129122.jpg'/>
-                <p className={styles.price1}>￥{50.00}</p>
-                <p className={styles.desc1}>幸福商城原产地—海南红心木瓜幸福商城原产地—海南红心</p>
-                </div>
-            </Col>
-            <Col className="gutter-row" span={6}>
-              <div className={styles.gutterbox}>
-                <img className={styles.img1} src='https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1568164077&di=b4607c0e3c24091edc7bdaf1e0d3d662&src=http://n.sinaimg.cn/sinacn10/354/w700h454/20180409/b024-fyvtmxe3129122.jpg'/>
-                <p className={styles.price1}>￥{50.00}</p>
-                <p className={styles.desc1}>幸福商城原产地—海南红心木瓜幸福商城原产地—海南红心</p>
-                </div>
-            </Col>
+            {
+              this.state.prolist.map((item,i)=>{
+                return(
+                   <Link to={{pathname:"/detail",state:{pid:item.pid}}} key={i} onClick={this.tap.bind(this,item.pid)}>
+                    <Col className="gutter-row" span={6}  >
+                    <div className={styles.gutterbox}>
+                      <img className={styles.img1} src={item.pimg}/>
+                      <p className={styles.price1}>￥{item.pprice}</p>
+                      <p className={styles.desc1}>{item.pname}</p>
+                    </div>
+                    </Col>
+                   </Link>
+                )
+              })
+            }
           </Row>
         </div>
       </div>
     )
+  }
+  componentDidMount(){
+    //console.log(this.props.location.state.pid)
+    let pid = this.props.location.state.pid;
+    Api.getProdetail({id:pid}).then(data => {
+      this.setState({
+          xq:data.data
+      })
+     })
+
+    //列表
+    Api.getProlist({uid:23255,pagesize:12}).then(data => {
+      //console.log(data.data)
+      let arr = data.data;
+      this.setState({
+        prolist:arr
+    })
+    
+  })
+}
+tap(p){
+    Api.getProdetail({id:p}).then(data => {
+      this.setState({
+          xq:data.data
+      })
+    })
+}
+rightnow(){
+  console.log('aa')
+}
+  addcart(){
+    let pid = this.props.location.state.pid;
+    let pnum = this.state.pnum;
+    let uid = 2019
+    Api.getAddcart({
+      uid:uid,
+      pid:pid,
+      pnum:pnum
+    }).then(data =>{
+      console.log(data)
+      alert('添加成功')
+    })
+    
   }
 }

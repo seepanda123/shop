@@ -124,6 +124,9 @@
 }
 .desc1{
   font-size: 14px;
+  color:black;
+  width:250px; 
+  margin-left:4px;
 }
 .shop{
   font-size: 20px;
