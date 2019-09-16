@@ -66,6 +66,7 @@ export default class detail extends Component {
   }
   componentDidMount(){
 
+
     //接受首页分类列表传过来的参数来决定列表展示种类
     Api.getProlist({uid:23255,pagesize:50}).then(data => {
       let arr = data.data
