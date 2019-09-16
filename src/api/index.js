@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-let base = process.env.API_ROOT;
+let base = "http://jx.xuzhixiang.top/ap/api";
 
 
 export const POST = (url, params) => {

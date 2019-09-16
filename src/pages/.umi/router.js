@@ -12,6 +12,16 @@ const routes = [
     component: require('../../layouts/index.js').default,
     routes: [
       {
+        path: '/addCart',
+        exact: true,
+        component: require('../addCart.js').default,
+      },
+      {
+        path: '/cart',
+        exact: true,
+        component: require('../cart.js').default,
+      },
+      {
         path: '/Detail',
         exact: true,
         component: require('../Detail.js').default,
@@ -20,6 +30,11 @@ const routes = [
         path: '/',
         exact: true,
         component: require('../index.js').default,
+      },
+      {
+        path: '/list',
+        exact: true,
+        component: require('../list.js').default,
       },
       {
         path: '/login',
@@ -35,6 +50,11 @@ const routes = [
         path: '/register',
         exact: true,
         component: require('../register.js').default,
+      },
+      {
+        path: '/settlement',
+        exact: true,
+        component: require('../settlement.js').default,
       },
       {
         component: () =>

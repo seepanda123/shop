@@ -1,0 +1,76 @@
+
+.pay{
+  padding: 0 55px 40px;
+  background: #fff;
+  margin-bottom: 40px;
+  margin: 0 auto;
+}
+.pay tr{
+  height: 44px;
+}
+.tit tr{
+  background-color: #f6f6f6;
+}
+.pay tr td{
+  border-bottom: 1px solid #eee;
+  padding: 10px 0 10px 15px;
+  text-align: left;
+}
+.pay tr td img{
+    width: 73px;
+    height: 73px;
+    display: block;
+    border: 1px solid #e0e0e0;
+}
+.pay .txtC{
+  text-align: center
+}
+
+.shopName{
+    line-height: 30px;
+    padding: 10px 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.tbody{
+  padding: 0 10px;
+}
+.shopList{
+  border:1px solid #eee;
+}
+
+/* 总价 */
+.count{
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    background: #f1f1f1;
+    padding: 0 0 0 25px;
+    margin-top:30px;
+}
+.merge1{
+    width: 700px;
+    position: relative;
+    text-align: right;
+    float: right;
+    padding-right: 180px;
+}
+
+.allMoney{
+  color: #cf1b1b;
+  font-size: 20px;
+}
+.doClear{
+    background: #6bc30d;
+    color: #fff;
+    display: inline-block;
+    height: 60px;
+    width: 140px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 20px;
+    transition: background .5s ease 0s;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
