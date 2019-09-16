@@ -1,5 +1,6 @@
 import { Carousel,Menu, Icon,PageHeader, Tag, Button, Statistic, Descriptions, Row, Col } from 'antd';
 import styles from './index.css';
+import 'antd/dist/antd.css';
 import Link from 'umi/link';
 import React,{useState,useEffect} from 'react';
 import api from '../api/api_pro';

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styles from './list.css';
 import Api from '../api/api_pro'
+import Link from 'umi/link';
 import {Breadcrumb,Row, Col } from 'antd';
 // const DemoBox = props => <p className={`height-${props.value}`}>{props.children}</p>;
 
@@ -13,7 +14,6 @@ export default class detail extends Component {
       prolist:[]
     }
   }
-  
   render() {
     return (
       <div>
@@ -29,7 +29,7 @@ export default class detail extends Component {
               <a>鲜为人知</a>
               <a>源来如此</a>
             </Col>
-            <Col span={1} pull={23}>分类：</Col>
+            <Col span={1} pull={23}>标签：</Col>
           </Row>
           <Row type="flex" justify="space-around" align="middle">
             <Col span={23} push={1}>
@@ -42,17 +42,20 @@ export default class detail extends Component {
         </div>
       </div>
         <div className={styles.tiao}>
+
           <Row gutter={16}>
             {
               this.state.prolist.map((item,i)=>{
                 return(
-                <Col className="gutter-row" span={6} key={i}>
-                <div className={styles.gutterbox}>
-                  <img className={styles.img} src={item.pimg}/>
-                  <p className={styles.jiage}>￥{item.pprice}</p>
-                  <p className={styles.desc}>{item.pname}</p>
-                </div>
-                </Col>
+                   <Link to={{pathname:"/detail",state:{pid:item.pid}}} key={i}>
+                    <Col className="gutter-row" span={6}  >
+                    <div className={styles.gutterbox}>
+                      <img className={styles.img} src={item.pimg}/>
+                      <p className={styles.jiage}>￥{item.pprice}</p>
+                      <p className={styles.desc}>{item.pname}</p>
+                    </div>
+                    </Col>
+                   </Link>
                 )
               })
             }
@@ -63,13 +66,47 @@ export default class detail extends Component {
   }
   componentDidMount(){
     console.log(this.props.location.state)
-    let arr = []
+
+    //接受首页分类列表传过来的参数来决定列表展示种类
     Api.getProlist({uid:23255,pagesize:50}).then(data => {
-      arr = (data.data).slice(22,28);
-      this.setState({
-        prolist:arr
-      })
+      let arr = data.data
+      switch (this.props.location.state) {
+        case "sub1":
+          let arr1=arr.slice(22,28);
+            this.setState({
+              prolist:arr1
+            })
+          break;
+          case "sub2":
+              let arr2=arr.slice(15,22);
+            this.setState({
+              prolist:arr2
+            })
+          break;
+          case "sub3":
+              let arr3=arr.slice(14,15);
+            this.setState({
+              prolist:arr3
+            })
+          break;
+          case "sub4":
+              let arr4=arr.slice(1,14);
+            this.setState({
+              prolist:arr4
+            })
+          break;
+        default:
+            this.setState({
+              prolist:arr
+            })
+          break;
+      }
     })
+
+    
+   
+   
   }
+ 
 }
 
