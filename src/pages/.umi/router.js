@@ -37,6 +37,21 @@ const routes = [
         component: require('../list.js').default,
       },
       {
+        path: '/login',
+        exact: true,
+        component: require('../login.js').default,
+      },
+      {
+        path: '/public',
+        exact: true,
+        component: require('../public.js').default,
+      },
+      {
+        path: '/register',
+        exact: true,
+        component: require('../register.js').default,
+      },
+      {
         path: '/settlement',
         exact: true,
         component: require('../settlement.js').default,

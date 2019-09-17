@@ -1,0 +1,212 @@
+.login * {
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    width: 100%;
+    height: 34px;
+    background-color: #333333;
+    line-height: 34px;
+    font-size: 12px;
+    color: #d6d6d6;
+}
+
+.icons {
+    font-size: 16px;
+    margin-left: 20%;
+
+}
+
+.nav a {
+    margin-left: 10px;
+    color: #d6d6d6;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.nav .phone {
+    display: block;
+    float: right;
+    width: 70px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    margin-right: 20%;
+}
+
+.nav .phone i {
+    display: inline-block;
+    font-size: 16px;
+}
+
+.nav .phone:hover {
+    background-color: black;
+}
+
+.nav .phone .erweima {
+    position: absolute;
+    display: none;
+    z-index: 999;
+}
+
+.nav .phone:hover .erweima {
+    display: block;
+}
+
+.header {
+    position: absolute;
+    width: 100%;
+    height: 84px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 5px #ccc;
+    z-index: 100;
+}
+
+.headercenter {
+    width: 1170px;
+    height: 100%;
+    margin: 0 auto;
+    line-height: 84px;
+}
+
+.headercenter img {
+    display: inline-block;
+    padding: 28px 0 0 15px;
+
+
+}
+
+.headercenter span {
+    font-size: 16px;
+    display: inline-block;
+    padding-left: 20px;
+
+}
+
+
+.common {
+    width: 100%;
+    height: 700px;
+    background-color: rgb(241, 241, 241);
+    margin-top: 84px;
+}
+
+.clearfix {
+    box-sizing: border-box;
+    padding: 100px;
+    width: 1200px;
+    height: 700px;
+    margin: 0 auto;
+}
+
+.clearfix .row {
+    position: relative;
+    display: block;
+    text-align: center;
+    width: 1000px;
+    height: 42px;
+}
+
+.clearfix .row h4 {
+    height: 42px;
+    width: 130px;
+    line-height: 42px;
+    padding: 0 15px 0 0;
+    text-align: right;
+    float: left;
+    color: #555555;
+}
+
+.clearfix .row1 {
+    width: 1000px;
+    height: 86px;
+    margin: 30px 0 15px;
+    position: relative;
+}
+
+.row1 .btn {
+    background-color: #75ca19;
+    width: 215px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    margin-left:132px;
+    border: none;
+}
+
+.clearfix .row1 .btn2 {
+    display: block;
+    margin-left: 132px;
+    margin-top: 20px;
+}
+.clearfix .row1 .btn2 a{
+  color: #75ca19;
+}
+
+
+.footer {
+    width: 100%;
+    height: 100px;
+    background: rgb(40, 40, 40);
+    color: #666;
+
+}
+
+.footer .fooCon {
+    width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.footer .fooCon p {
+    padding-top: 18px;
+}
+
+.footer .fooCon .p1 span a {
+    color: #666;
+    margin-left: 5px;
+}
+
+.footer .fooCon .p1 span {
+    margin-left: 5px;
+}
+
+.follow {
+    float: right;
+    margin-right: 70px;
+    position: relative;
+
+}
+
+.follow span {
+    font-size: 14px;
+    color: #666666;
+}
+
+
+.follow img {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ddd;
+    position: absolute;
+    left: 70px;
+    top: -103px;
+    display: none;
+}
+
+.iconH {
+    font-size: 20px;
+}
+
+
+.barcode:hover img {
+    display: block;
+}
+
+
+.p2 span {
+    padding-left: 5px;
+}
