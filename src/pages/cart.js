@@ -5,36 +5,103 @@ import Link from 'umi/link';
 import React,{useState,useEffect} from 'react';
 import api from '../api/api_pro';
 
-//修改数量
-function onChange(value) {
-  console.log(value);
-}
+
 
 
 export default function(props) {
-
   //取购物车数据
   const [cartList,setCartList] = useState([]);
+  //多选
+  const [flag,setFlag] = useState(false)
+  //总数
+  const [nums, setNums] = useState(0)
+  //总价
+  const [allPrice, setAllPrice] = useState('0.00')
+
+
 
   useEffect(() => {
     api.getCartlist({id:2019}).then((data)=>{
+      data.data.map((list)=>{
+        if(list.flags){
+          list.flags = !list.flags
+        }else{
+          list.flags = false
+        }
+      })
       setCartList(data.data)
     })
-  }, [props.cartList])
+  }, [])
+
+
+  //修改数量
+  function onChange(pid,i,value) {
+    api.updatedcartnum({
+      uid:2019,
+      pid:pid,
+      pnum:value
+    }).then((data)=>{
+      let arr = [...cartList];
+      arr[i].pnum = value;
+      setCartList(arr);
+      allNum(arr)
+    })
+  }
 
 
   //删除商品
-function del(pid){
-  console.log(pid)
-  api.delcartlist({
-    uid:2019,
-    pid:pid
-  }).then((data)=>{
-    api.getCartlist({id:2019}).then((data)=>{
-      setCartList(data.data)
+  function del(pid,i){
+    api.delcartlist({
+      uid:2019,
+      pid:pid
+    }).then((data)=>{
+      let arr = [...cartList];
+      arr.splice(i, 1)
+      setCartList(arr)
+      allNum(arr)
     })
-  })
-}
+  }
+
+
+  //全选
+  function quan() {
+    setFlag(!flag)
+    let arr = [...cartList];
+    arr.map((list)=>{
+      list.flags = !flag
+    })
+    setCartList(arr)
+    allNum(arr)
+  }
+
+  //单选
+  function dan(i){
+    let arr = [...cartList];
+    arr[i].flags = !arr[i].flags
+    let newArr = arr.filter(data => data.flags == true)
+    if(arr.length == newArr.length){
+      setFlag(true)
+    }else{
+      setFlag(false)
+    }
+    setCartList(arr)
+    allNum(arr)
+  }
+
+  //总数+总价
+  function allNum(arr) {
+    let arrs = [...arr];
+    let num = 0;
+    let price = 0;
+    arrs.filter(data=>{
+      if(data.flags == true){
+        num += parseInt(data.pnum)
+        price += data.pnum*data.pprice
+      }
+    });
+    setNums(num);
+    setAllPrice(price+".00")
+  }
 
 
 
@@ -70,7 +137,7 @@ function del(pid){
           <tbody>
             <tr>
               <td width="30">
-                <input type="checkbox" />
+                <input type="checkbox" checked={flag} onClick={quan.bind(props)}/>
               </td>
               <td width="420">全选</td>
               <td width="145" className={styles.txtC}>单价（元）</td>
@@ -91,7 +158,7 @@ function del(pid){
                 return(
                   <tr key={i}>
                     <td width="20">
-                      <input type="checkbox"/>
+                      <input type="checkbox" checked={item.flags} onClick={dan.bind(props,i)}/>
                     </td>
                     <td width="75">
                       <img src={item.pimg}/>
@@ -99,11 +166,11 @@ function del(pid){
                     <td width="325">{item.pname}</td>
                     <td width="140" className={styles.txtC}>￥{item.pprice}</td>
                     <td width="170" className={styles.txtC}>
-                      <InputNumber size="small" min={1} max={100000} defaultValue={item.pnum} onChange={onChange} />
+                      <InputNumber size="small" min={1} max={100000} value={item.pnum} onChange={onChange.bind(props,item.pid,i)} />
                     </td>
-                    <td width="140" className={styles.txtC}>￥{item.pprice}</td>
+                    <td width="140" className={styles.txtC}>￥{item.pprice*item.pnum}</td>
                     <td className={styles.txtC}>
-                      <Button  onClick={del.bind(props,item.pid)}>删除</Button>
+                      <Button  onClick={del.bind(props,item.pid,i)}>删除</Button>
                     </td>
                   </tr>
                 )
@@ -115,14 +182,14 @@ function del(pid){
 
         {/* 总价 */}
         <div className={styles.count}>
-          <input type="checkbox"/> 全选
+          <input type="checkbox" checked={flag} onClick={quan.bind(props)}/> 全选
           <div className={styles.merge1}>
             已选商品
-            <span className={styles.clRed}> 1 </span> 件 
+            <span className={styles.clRed}> {nums} </span> 件 
             <Icon type="double-right" className={styles.mg10}/>
             <span className={styles.mg10}>
               合计（不含运费）：
-              <span className={styles.allMoney}>￥48.00</span>  
+              <span className={styles.allMoney}>￥{allPrice}</span>  
             </span>
           </div>
           <span className={styles.doClear}>结算</span>
