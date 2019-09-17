@@ -1,13 +1,4 @@
 
-.nav {
-  width:1170px;
-  height: 60px;
-  line-height: 30px;
-  padding: 20px 0 10px;
-  font-size: 14px;
-  color: #333;
-  margin: 0 auto;
-}
 .rows{
   background:#fff;
   width:1170px;
@@ -58,4 +49,7 @@
 }
 .desc{
   font-size: 14px;
+  color:black;
+  width:250px; 
+  margin-left:4px;
 }
