@@ -15,7 +15,6 @@ export default class detail extends Component {
   constructor(props) {
     super(props);
     this.state={
-      dz:"源来如此",
       cities: cityData[provinceData[0]],
       secondCity: cityData[provinceData[0]][0],
       size: 'large',
@@ -48,9 +47,6 @@ export default class detail extends Component {
   };
 
 
-  componentDidMount(){
-    console.log(this.props.location.state.pid)
-  }
 
   render() {
     const { cities } = this.state;
@@ -60,12 +56,7 @@ export default class detail extends Component {
       <Breadcrumb className={styles.nav} separator=">">
         <Breadcrumb.Item>幸福商城</Breadcrumb.Item>
         <Breadcrumb.Item href="">原产地</Breadcrumb.Item>
-        <a href="">{this.state.dz}</a>
       </Breadcrumb>
-
-
-
-
 
       <div>
         <Row className={styles.main}>
@@ -122,12 +113,6 @@ export default class detail extends Component {
               {this.state.xq.pdesc}
             </div>
           </div>
-
-
-
-
-
-
 
           <div className={styles.tiao}>
             <p className={styles.shop}>热门推荐：</p>
@@ -189,7 +174,11 @@ export default class detail extends Component {
       pid:pid,
       pnum:pnum
     }).then(data =>{
+<<<<<<< HEAD
       this.props.history.push('./addCart')
+=======
+      this.props.history.push("/addCart")
+>>>>>>> b0978e155206117c7dbdeab8308d79ea3c79bba1
     })
   }
 }
