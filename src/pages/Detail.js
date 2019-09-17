@@ -118,10 +118,7 @@ export default class detail extends Component {
                   onChange={this.onChange.bind(this)}
                 />
               </div>
-            <div className={styles.original1}>
-              <span className={styles.lable}>数&nbsp;&nbsp;&nbsp;&nbsp;量：</span>
-              <InputNumber size="large" min={1} max={100000} defaultValue={1} onChange={this.onChange.bind(this)} />
-            </div>
+            
             {/* 按钮 */}
             <div className={styles.btn}>
               <Button type="primary" size={size} ghost="true" className={styles.zbuy} onClick={this.rightnow.bind(this,{pid:this.state.xq.pid})}>立即购买</Button>
