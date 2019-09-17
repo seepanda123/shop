@@ -58,4 +58,7 @@
 }
 .desc{
   font-size: 14px;
+  color:black;
+  width:250px; 
+  margin-left:4px;
 }

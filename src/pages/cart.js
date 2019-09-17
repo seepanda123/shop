@@ -99,7 +99,7 @@ function del(pid){
                     <td width="325">{item.pname}</td>
                     <td width="140" className={styles.txtC}>￥{item.pprice}</td>
                     <td width="170" className={styles.txtC}>
-                      <InputNumber size="small" min={1} max={100000} defaultValue={item.pnum} onChange={onChange} />
+                      <InputNumber size="small" min={1} max={100000} value={item.pnum} onChange={onChange} />
                     </td>
                     <td width="140" className={styles.txtC}>￥{item.pprice}</td>
                     <td className={styles.txtC}>
@@ -118,11 +118,11 @@ function del(pid){
           <input type="checkbox"/> 全选
           <div className={styles.merge1}>
             已选商品
-            <span className={styles.clRed}> 1 </span> 件 
+            <span className={styles.clRed}> 1 </span> 件
             <Icon type="double-right" className={styles.mg10}/>
             <span className={styles.mg10}>
               合计（不含运费）：
-              <span className={styles.allMoney}>￥48.00</span>  
+              <span className={styles.allMoney}>￥48.00</span>
             </span>
           </div>
           <span className={styles.doClear}>结算</span>
