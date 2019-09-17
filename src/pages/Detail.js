@@ -138,22 +138,21 @@ export default class detail extends Component {
     )
   }
   componentDidMount(){
-    let pid = this.props.location.state.pid;
-    Api.getProdetail({id:pid}).then(data => {
-      this.setState({
-          xq:data.data
-      })
-    })
+        let pid = this.props.location.state.pid;
+        Api.getProdetail({id:pid}).then(data => {
+          this.setState({
+            xq:data.data
+          })
+        })
 
 
-    Api.getProlist({uid:23255,pagesize:12}).then(data => {
-      let arr = data.data;
-      this.setState({
-        prolist:arr
-      })
-    
-    })
-  }
+        Api.getProlist({uid:23255,pagesize:12}).then(data => {
+          let arr = data.data;
+          this.setState({
+            prolist:arr
+          })
+        })
+    }
   tap(p){
       Api.getProdetail({id:p}).then(data => {
         this.setState({
