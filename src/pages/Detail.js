@@ -118,35 +118,32 @@ export default class detail extends Component {
                   onChange={this.onChange.bind(this)}
                 />
               </div>
-              {/* 按钮 */}
-              <div className={styles.btn}>
-                <Button
-                  type="primary"
-                  size={size}
-                  ghost="true"
-                  className={styles.zbuy}
-                  onClick={this.rightnow.bind(this)}
-                >
-                  立即购买
-                </Button>
-                <Button
-                  type="primary"
-                  size={size}
-                  className={styles.buy}
-                  onClick={this.addcart.bind(this)}
-                >
-                  加入购物车
-                </Button>
-              </div>
-            </Col>
-          </Row>
-        </div>
-        {/* 商品详情 */}
-        <div className={styles.desc}>
-          <p className={styles.shop}>商品详情：</p>
-          <div className={styles.tit}>{this.state.xq.pname}</div>
-          <div className={styles.ptext}>{this.state.xq.pdesc}</div>
-        </div>
+            <div className={styles.original1}>
+              <span className={styles.lable}>数&nbsp;&nbsp;&nbsp;&nbsp;量：</span>
+              <InputNumber size="large" min={1} max={100000} defaultValue={1} onChange={this.onChange.bind(this)} />
+            </div>
+            {/* 按钮 */}
+            <div className={styles.btn}>
+              <Button type="primary" size={size} ghost="true" className={styles.zbuy} onClick={this.rightnow.bind(this,{pid:this.state.xq.pid})}>立即购买</Button>
+              <Button type="primary" size={size} className={styles.buy} onClick={this.addcart.bind(this)}>加入购物车</Button>
+            </div>
+          </Col>
+        </Row>
+      </div>
+          {/* 商品详情 */}
+          <div className={styles.desc}>
+            <p className={styles.shop}>商品详情：</p>
+            <div className={styles.tit}>{this.state.xq.pname}</div>
+            <div className={styles.ptext}>
+              {this.state.xq.pdesc}
+            </div>
+          </div>
+
+
+
+
+
+
 
         <div className={styles.tiao}>
           <p className={styles.shop}>热门推荐：</p>
@@ -178,30 +175,31 @@ export default class detail extends Component {
     let pid = this.props.location.state.pid;
     Api.getProdetail({ id: pid }).then(data => {
       this.setState({
-        xq: data.data
-      });
-    });
+          xq:data.data
+      })
+    })
 
     //列表
-    Api.getProlist({ uid: 23255, pagesize: 12 }).then(data => {
-      //console.log(data.data)
+    Api.getProlist({uid:23255,pagesize:12}).then(data => {
       let arr = data.data;
       this.setState({
-        prolist: arr
-      });
-    });
+        prolist:arr
+      })
+    
+    })
   }
-  tap(p) {
-    Api.getProdetail({ id: p }).then(data => {
-      this.setState({
-        xq: data.data
-      });
-    });
+  tap(p){
+      Api.getProdetail({id:p}).then(data => {
+        this.setState({
+            xq:data.data
+        })
+      })
   }
-  rightnow() {
-    console.log("aa");
+  rightnow(pid){
+    let pnum = this.state.pnum;
+    this.props.history.push('/settlement',{pid:pid,pnum:pnum})
   }
-  addcart() {
+  addcart(){
     let pid = this.props.location.state.pid;
     let pnum = this.state.pnum;
     let uid = 2019;
