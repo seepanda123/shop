@@ -55,7 +55,7 @@ export default class detail extends Component {
       <div>
       <Breadcrumb className={styles.nav} separator=">">
         <Breadcrumb.Item>幸福商城</Breadcrumb.Item>
-        <Breadcrumb.Item href="">原产地</Breadcrumb.Item>
+        <Breadcrumb.Item>原产地</Breadcrumb.Item>
       </Breadcrumb>
 
       <div>
@@ -174,11 +174,7 @@ export default class detail extends Component {
       pid:pid,
       pnum:pnum
     }).then(data =>{
-<<<<<<< HEAD
-      this.props.history.push('./addCart')
-=======
       this.props.history.push("/addCart")
->>>>>>> b0978e155206117c7dbdeab8308d79ea3c79bba1
     })
   }
 }
