@@ -120,7 +120,7 @@ export default class detail extends Component {
             {
               this.state.prolist.map((item,i)=>{
                 return(
-                   <Link to={{pathname:"/detail",state:{pid:item.pid}}} key={i} onClick={this.tap.bind(this,item.pid)}>
+                  <Link to={{pathname:"/detail",state:{pid:item.pid}}} key={i} onClick={this.tap.bind(this,item.pid)}>
                     <Col className="gutter-row" span={6}  >
                     <div className={styles.gutterbox}>
                       <img className={styles.img1} src={item.pimg}/>
@@ -128,7 +128,7 @@ export default class detail extends Component {
                       <p className={styles.desc1}>{item.pname}</p>
                     </div>
                     </Col>
-                   </Link>
+                  </Link>
                 )
               })
             }
