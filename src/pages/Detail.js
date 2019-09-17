@@ -145,7 +145,7 @@ export default class detail extends Component {
       })
     })
 
-    //列表
+
     Api.getProlist({uid:23255,pagesize:12}).then(data => {
       let arr = data.data;
       this.setState({
@@ -174,11 +174,7 @@ export default class detail extends Component {
       pid:pid,
       pnum:pnum
     }).then(data =>{
-<<<<<<< HEAD
-      this.props.history.push('./addCart')
-=======
       this.props.history.push("/addCart")
->>>>>>> b0978e155206117c7dbdeab8308d79ea3c79bba1
     })
   }
 }
