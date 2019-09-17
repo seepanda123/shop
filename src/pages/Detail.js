@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import styles from './detail.css';
 import Api from '../api/api_pro'
@@ -175,10 +174,11 @@ export default class detail extends Component {
       pid:pid,
       pnum:pnum
     }).then(data =>{
-
+<<<<<<<<< Temporary merge branch 1
       this.props.history.push('./addCart')
-
+=========
+      this.props.history.push("/addCart")
+>>>>>>>>> Temporary merge branch 2
     })
   }
 }
-
