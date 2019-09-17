@@ -1,4 +1,4 @@
-.register * {
+.login * {
     margin: 0;
     padding: 0;
 }
@@ -45,7 +45,9 @@
 }
 
 .nav .phone .erweima {
+    position: absolute;
     display: none;
+    z-index: 999;
 }
 
 .nav .phone:hover .erweima {
@@ -70,6 +72,8 @@
 
 .headercenter img {
     display: inline-block;
+    padding: 28px 0 0 15px;
+
 
 }
 

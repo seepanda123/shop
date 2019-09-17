@@ -2,11 +2,16 @@ import Link from 'umi/link';
 import styles from './login.css';
 import {Icon, Input, Tooltip, Form, Button, Checkbox} from 'antd';
 import React, {Component} from 'react'
+import Api from '../api/api_pro'
 
 
 export default class login extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            val1:'',
+            val2:''
+        }
     }
 
     render() {
@@ -42,15 +47,17 @@ export default class login extends Component {
                             <div className={styles.fromInput}>
                                 <Input
                                     placeholder="账号"
+                                    onChange={this.Change1.bind(this)}
                                     prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                                    value=""
+
                                 />
                                 <br/>
                                 <br/>
                                 <Input
                                     placeholder="密码"
+                                    onChange={this.Change2.bind(this)}
                                     prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                                    value=""
+
                                 />
 
                                 <div className={styles.detail}>
@@ -58,6 +65,7 @@ export default class login extends Component {
                                     <Button
                                         className={styles.btn1}
                                         block
+                                        onClick={this.btn1.bind(this)}
                                     >
                                         登录
                                     </Button>
@@ -116,6 +124,45 @@ export default class login extends Component {
             </div>
 
         )
+    }
+    Change1(e){
+        //console.log(e.target.value)
+        this.setState({
+            val1:e.target.value
+        })
+    }
+
+    Change2(e){
+        //console.log(e.target.value)
+        this.setState({
+            val2:e.target.value
+        })
+    }
+
+    btn1(e){
+        let val1 = this.state.val1
+        let val2 = this.state.val2
+
+        Api.login({username:val1,password:val2}).then(data => {
+            //console.log(data)
+            let name = "xfsc";
+            let val = data.data.token;
+            let time = 7;
+
+            if(data.msg=="登录成功"){
+                function setCookie (name,val,time) {
+                    //存的名称name,存的值val,存的天数time(过期时间)
+                    let oDate = new Date();
+                    oDate.setDate(oDate.getDate()+time);
+                    document.cookie=name+"="+val+";expires="+oDate;//过期时间
+                }
+                setCookie(name,val,time)
+                this.props.history.push("/")
+            }else {
+                alert("用户名或者密码错误")
+            }
+        })
+
     }
 
 }

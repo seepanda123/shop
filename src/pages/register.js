@@ -1,12 +1,19 @@
 import React, {Component} from 'react'
 import styles from './register.css';
 import Link from 'umi/link';
+import Api from '../api/api_pro'
 import {Button, Icon, Input, Form, DatePicker, TimePicker, Select, Cascader, InputNumber} from "antd";
+
 
 
 export default class register extends Component {
     constructor(props) {
         super(props)
+        this.state={
+            val1:"",
+            val2:"",
+
+        }
     }
 
     render() {
@@ -41,9 +48,12 @@ export default class register extends Component {
                         <div className={styles.row}>
                             <h4>手机号码:</h4>
                             <Input placeholder="  手机账号"
+                                   type="text"
                                    allowClear
-                                   onChange={onChange}
+                                   onChange={this.Change1.bind(this)}
+                                   onBlur={this.Blur1.bind(this)}
                                    style={{width: '300px', height: '45px', display: "block",float:'left'}}
+
                             />
 
                         </div>
@@ -52,8 +62,9 @@ export default class register extends Component {
                         <div className={styles.row}>
                             <h4>    密码:</h4>
                             <Input placeholder="  密码"
+                                   type="password"
                                    allowClear
-                                   onChange={onChange}
+                                   onChange={this.Change2.bind(this)}
                                    style={{width: '300px', height: '45px', display: "block",float:'left'}}
                             />
                         </div>
@@ -62,6 +73,7 @@ export default class register extends Component {
                             <Button
                                 className={styles.btn}
                                 block
+                                onClick={this.btn1.bind(this)}
                             >立即加入</Button>
                             <span className={styles.btn2}
                             >已有账号,<a href="/login">立即登录</a></span>
@@ -114,6 +126,57 @@ export default class register extends Component {
 
         )
     }
+    btn1(e){
+        let val1 = this.state.val1
+        let val2 = this.state.val2
+        if(!(/^[\w_-]{6,16}$/.test(val2))){
+            alert("密码不符合")
+        }else {
+
+            Api.register({username:val1,password:val2}).then(data => {
+                //console.log(data.msg)
+                if (data.msg=="用户名已经存在"){
+                    alert("用户名已经存在")
+                }else{
+                    alert("注册成功")
+                    this.props.history.push("/login")
+                }
+
+            })
+
+        }
+
+    }
+
+
+    Change1(e){
+        //console.log(e.target.value)
+        this.setState({
+            val1:e.target.value
+        })
+    }
+
+    Change2(e){
+        //console.log(e.target.value)
+        this.setState({
+            val2:e.target.value
+        })
+    }
+
+    Blur1(e){
+        //console.log(e.target.value)
+        let val=e.target.value
+        if(val==""){
+            alert("请输入手机号")
+        }else if(!(/^1[3456789]\d{9}$/.test(val))){
+            alert("请输入正确的手机号")
+        }else {
+            return true
+        }
+
+    }
+
+
 
 
 }

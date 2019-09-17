@@ -4,6 +4,9 @@ import Link from 'umi/link';
 import {Icon, Input, Tooltip, Form, Button, Checkbox} from 'antd';
 import React, {Component} from 'react'
 export default function(props) {
+    if(props.location.pathname === '/login' || props.location.pathname === '/register'){
+        return <div>{props.children }</div>
+    }
 
   return (
     <div>
