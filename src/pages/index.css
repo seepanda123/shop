@@ -3,9 +3,15 @@
   width: 1170px;
   margin: 0 auto;
   position: relative;
+
 }
 
-/* 轮播图 */
+.normal *{
+    margin: 0;
+    padding: 0;
+}
+
+    /* 轮播图 */
 .ant-carousel .slick-slide {
   text-align: center;
   height: 160px;
