@@ -1,6 +1,6 @@
 .normal {
   width: 1170px;
-  margin: 90px auto 0;
+  margin: 0 auto;
 }
 .login * {
   margin: 0;
@@ -92,6 +92,96 @@
   display: block;
   padding: 28px 0 0 15px;
 }
+
+
+.headerMall {
+  width: 100%;
+  height: 106px;
+  margin-top: 84px;
+
+}
+
+.headerMall .mallLayout {
+  width: 1170px;
+  height: 106px;
+  margin: 0 auto;
+
+  display: block;
+}
+
+.mallLayout .logo {
+  width: 200px;
+  height: 53px;
+  display: block;
+  float: left;
+  background: url(../image/qq4.png) left center no-repeat;
+  margin-top: 27px;
+  margin-left: 15px;
+}
+.mallLayout .infos{
+  margin-top: 32px;
+  width: 800px;
+  height: 42px;
+  float: right;
+}
+
+.mallLayout .infos .sousuo{
+  width: 342px;
+  height: 42px;
+  margin-left: 230px;
+  float: left;
+}
+
+.mallLayout .infos .sousuo input{
+  width: 284px;
+  height: 42px;
+  border: 1px solid #6bc30d;
+}
+.mallLayout .infos .sousuo button{
+  width: 56px;
+  height: 42px;
+  background-color: #6bc30d;
+  border: 1px solid #6bc30d;
+}
+
+
+.mallLayout .cartcar{
+  list-style: none;
+  float: left;
+  margin-left: 100px;
+  display: block;
+  height: 40px;
+  width: 134px;
+  border: 1px solid #e6e6e6;
+  text-align: center;
+  line-height: 40px;
+  font-size: 15px;
+  color: black;
+}
+
+.mallLayout .cartcar .car{
+  font-size: 20px;
+  color:#a0a0a0;
+  padding: 0 10px 0 0 ;
+}
+.mallLayout .cartcar em{
+  display: inline-block;
+  background-color: red;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 14px;
+  text-align: center;
+  line-height: 20px;
+  font-style:normal;
+  margin-left: 10px;
+}
+
+
+
+
+
 
 
 

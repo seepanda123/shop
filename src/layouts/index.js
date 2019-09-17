@@ -4,11 +4,12 @@ import Link from 'umi/link';
 import {Icon, Input, Tooltip, Form, Button, Checkbox} from 'antd';
 import React, {Component} from 'react'
 export default function(props) {
-    if(props.location.pathname === '/login' || props.location.pathname === '/register'){
+    if(props.location.pathname === '/login' || props.location.pathname === '/register'|| props.location.pathname === '/public'){
         return <div>{props.children }</div>
     }
-
+    const { Search } = Input;
   return (
+
     <div>
         <div className={styles.nav}>
             <Icon className={styles.icons} type="home"/>
@@ -29,6 +30,25 @@ export default function(props) {
             <div className={styles.headercenter}>
 
                 <img src="http://statics.opark.com/css/opark/common/images/logo_cyzg.png" alt=""/>
+            </div>
+        </div>
+        <div className={styles.headerMall}>
+            <div className={styles.mallLayout}>
+                <a className={styles.logo}></a>
+                <div className={styles.infos}>
+                    <Search placeholder="搜索幸福商城商品"
+                            onSearch={value => console.log(value)}
+                            enterButton
+                            style={{ width:284,height:42,}}
+                            className={styles.sousuo}
+                    />
+                    <a href="/cart" className={styles.cartcar}>
+                        <i className={styles.car}><Icon type="shopping-cart" /></i>
+                        购物车
+                        <em>0</em>
+                    </a>
+
+                </div>
             </div>
         </div>
 

@@ -11,6 +11,7 @@ export default class public1 extends Component {
 
     render() {
 
+        const { Search } = Input;
         return (
             <div className={styles.public}>
                 <div className={styles.nav}>
@@ -35,6 +36,27 @@ export default class public1 extends Component {
                         <img src="http://statics.opark.com/css/opark/common/images/logo_cyzg.png" alt=""/>
                     </div>
                 </div>
+
+                <div className={styles.headerMall}>
+                    <div className={styles.mallLayout}>
+                        <a className={styles.logo}></a>
+                        <div className={styles.infos}>
+                            <Search placeholder="搜索幸福商城商品"
+                                    onSearch={value => console.log(value)}
+                                    enterButton
+                                    style={{ width:284,height:42,}}
+                                    className={styles.sousuo}
+                            />
+                            <a href="/cart" className={styles.cartcar}>
+                                <i className={styles.car}><Icon type="shopping-cart" /></i>
+                                    购物车
+                                <em>0</em>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
 
 
                 <div className={styles.footer}>
