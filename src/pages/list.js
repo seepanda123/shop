@@ -16,11 +16,6 @@ export default class detail extends Component {
   render() {
     return (
       <div>
-      <Breadcrumb className={styles.nav} separator=">">
-        <Breadcrumb.Item>幸福商城</Breadcrumb.Item>
-        <Breadcrumb.Item >原产地</Breadcrumb.Item>
-        <Breadcrumb.Item>源来如此</Breadcrumb.Item>
-      </Breadcrumb>
       <div className={styles.rows}>
         <div className={styles.rows1}>
           <Row type="flex" justify="space-around" align="middle">

@@ -1,12 +1,18 @@
-
+import React, { Component } from 'react'
 import styles from './settlement.css';
+import Api from '../api/api_pro'
 import { Empty, Button,PageHeader,InputNumber,Icon} from 'antd';
 import Link from 'umi/link';
 
-
-
-
-export default function() {
+export default class settlement extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+          xq:'',
+          pnum:1
+    }
+  }
+  render() {
   return (
     <div className={styles.normal}>
       <div className={styles.pay}>
@@ -27,22 +33,12 @@ export default function() {
             <table width="100%">
               <tr>
                 <td width="75">
-                  <img src="http://statics.opark.com/file/1656578781/0/9/53/172/%E5%BE%97%E5%8A%9B-6801-%E7%99%BD%E6%9D%BF%E7%AC%94%EF%BC%88%E8%93%9D%EF%BC%89.jpg?w=75&h=75"/>
+                  <img src={this.state.xq.pimg}/>
                 </td>
-                <td width="325">得力 6801 白板笔（蓝） 10支起售</td>
-                <td width="140" className={styles.txtC}>￥35</td>
-                <td width="170" className={styles.txtC}>4</td>
-                <td width="140" className={styles.txtC}>￥35.00</td>
-              </tr>
-
-              <tr>
-                <td width="75">
-                  <img src="http://statics.opark.com/file/1656578781/0/9/53/172/%E5%BE%97%E5%8A%9B-6801-%E7%99%BD%E6%9D%BF%E7%AC%94%EF%BC%88%E8%93%9D%EF%BC%89.jpg?w=75&h=75"/>
-                </td>
-                <td width="325">得力 6801 白板笔（蓝） 10支起售</td>
-                <td width="140" className={styles.txtC}>￥35</td>
-                <td width="170" className={styles.txtC}>4</td>
-                <td width="140" className={styles.txtC}>￥35.00</td>
+                <td width="325">{this.state.xq.pname}</td>
+                <td width="140" className={styles.txtC}>￥{this.state.xq.pprice}</td>
+                <td width="170" className={styles.txtC}>{this.state.pnum}</td>
+                <td width="140" className={styles.txtC}>{this.state.pnum*this.state.xq.pprice}</td>
               </tr>
             </table>
           </div>
@@ -51,11 +47,22 @@ export default function() {
         {/* 总价 */}
         <div className={styles.count}>
           <div className={styles.merge1}>
-            应付总额：<span className={styles.allMoney}>￥0.00</span>
+            应付总额：<span className={styles.allMoney}>￥{this.state.pnum*this.state.xq.pprice}</span>
           </div>
           <span className={styles.doClear}>提交订单</span>
         </div>
       </div>
     </div>
-  );
+  )
+  }
+    componentDidMount() {
+      let pid = this.props.location.state.pid.pid;
+      let pnum = this.props.location.state.pnum
+      Api.getProdetail({id:pid}).then(data => {
+        this.setState({
+          xq:data.data,
+          pnum:pnum
+        })
+      })
+    }
 }
