@@ -175,25 +175,22 @@ export default class detail extends Component {
     let pid = this.props.location.state.pid;
     Api.getProdetail({ id: pid }).then(data => {
       this.setState({
-          xq:data.data
+        xq:data.data
       })
     })
-
-    //列表
     Api.getProlist({uid:23255,pagesize:12}).then(data => {
       let arr = data.data;
       this.setState({
         prolist:arr
       })
-    
     })
   }
   tap(p){
-      Api.getProdetail({id:p}).then(data => {
-        this.setState({
-            xq:data.data
-        })
+    Api.getProdetail({id:p}).then(data => {
+      this.setState({
+        xq:data.data
       })
+    })
   }
   rightnow(pid){
     let pnum = this.state.pnum;

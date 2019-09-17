@@ -10,18 +10,12 @@ export default class detail extends Component {
   constructor(props) {
     super(props);
     this.state={
-      dz:"源来如此",
       prolist:[]
     }
   }
   render() {
     return (
       <div>
-      <Breadcrumb className={styles.nav} separator=">">
-        <Breadcrumb.Item>幸福商城</Breadcrumb.Item>
-        <Breadcrumb.Item href="">原产地</Breadcrumb.Item>
-        <a href="">{this.state.dz}</a>
-      </Breadcrumb>
       <div className={styles.rows}>
         <div className={styles.rows1}>
           <Row type="flex" justify="space-around" align="middle">
@@ -102,11 +96,6 @@ export default class detail extends Component {
           break;
       }
     })
-
-    
-   
-   
   }
- 
 }
 
