@@ -175,11 +175,9 @@ export default class detail extends Component {
       pid:pid,
       pnum:pnum
     }).then(data =>{
-<<<<<<< HEAD
+
       this.props.history.push('./addCart')
-=======
-      this.props.history.push("/addCart")
->>>>>>> b0978e155206117c7dbdeab8308d79ea3c79bba1
+
     })
   }
 }
