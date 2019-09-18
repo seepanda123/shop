@@ -136,8 +136,8 @@ function Cart(props) {
   } else {
     {/* 购物车有商品 */}
     return (
-      <td className={styles.normal}>
-        <td className={styles.pay}>
+      <div className={styles.normal}>
+        <div className={styles.pay}>
           <PageHeader subTitle="查看购物车商品清单，增加减少商品数量，并勾选想要的商品进入下一步操作。" />
           <table width="100%" className={styles.tit}>
             <tbody>
@@ -146,7 +146,7 @@ function Cart(props) {
                   <input
                     type="checkbox"
                     checked={flag}
-                    onClick={quan.bind(props)}
+                    onChange={quan.bind(props)}
                   />
                 </td>
                 <td width="420">全选</td>
@@ -176,8 +176,8 @@ function Cart(props) {
                         <td width="20">
                           <input
                             type="checkbox"
-                            checked={item.flags}
-                            onClick={dan.bind(props, i)}
+                            checked = {item.flags}
+                            onChange={dan.bind(props, i)}
                           />
                         </td>
                         <td width="75">
@@ -214,7 +214,7 @@ function Cart(props) {
 
           {/* 总价 */}
           <div className={styles.count}>
-            <input type="checkbox" checked={flag} onClick={quan.bind(props)} />{" "}
+            <input type="checkbox" checked={flag} onChange={quan.bind(props)} />
             全选
             <div className={styles.merge1}>
               已选商品
@@ -227,8 +227,8 @@ function Cart(props) {
             </div>
             <span className={styles.doClear} onClick={jie.bind(props)}>结算</span>
           </div>
-        </td>
-      </td>
+        </div>
+      </div>
     );
   }
 //结算
