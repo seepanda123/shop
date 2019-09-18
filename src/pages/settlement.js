@@ -8,8 +8,8 @@ export default class settlement extends Component {
   constructor(props) {
     super(props);
     this.state={
-          xq:'',
-          pnum:1
+          arr:[],
+          allMoney:0
     }
   }
   render() {
@@ -31,15 +31,21 @@ export default class settlement extends Component {
           <div className={styles.shopName}>商家：O'PARK平台自营店</div>
           <div className={styles.tbody}>
             <table width="100%">
-              <tr>
-                <td width="75">
-                  <img src={this.state.xq.pimg}/>
-                </td>
-                <td width="325">{this.state.xq.pname}</td>
-                <td width="140" className={styles.txtC}>￥{this.state.xq.pprice}</td>
-                <td width="170" className={styles.txtC}>{this.state.pnum}</td>
-                <td width="140" className={styles.txtC}>{this.state.pnum*this.state.xq.pprice}</td>
-              </tr>
+              <tbody>
+              {this.state.arr.map((list,i)=>{
+                return(
+                  <tr key={i}>
+                    <td width="75">
+                      <img src={list.pimg}/>
+                    </td>
+                    <td width="325">{list.pname}</td>
+                    <td width="140" className={styles.txtC}>￥{list.pprice}</td>
+                    <td width="170" className={styles.txtC}>{list.pnum}</td>
+                    <td width="140" className={styles.txtC}>{list.pnum*list.pprice}</td>
+                  </tr>
+                )
+              })}
+              </tbody>
             </table>
           </div>
         </div>
@@ -47,7 +53,7 @@ export default class settlement extends Component {
         {/* 总价 */}
         <div className={styles.count}>
           <div className={styles.merge1}>
-            应付总额：<span className={styles.allMoney}>￥{this.state.pnum*this.state.xq.pprice}</span>
+            应付总额：<span className={styles.allMoney}>￥{this.state.allMoney}</span>
           </div>
           <span className={styles.doClear}>提交订单</span>
         </div>
@@ -55,14 +61,15 @@ export default class settlement extends Component {
     </div>
   )
   }
-    componentDidMount() {
-      let pid = this.props.location.state.pid.pid;
-      let pnum = this.props.location.state.pnum
-      Api.getProdetail({id:pid}).then(data => {
-        this.setState({
-          xq:data.data,
-          pnum:pnum
-        })
+    componentDidMount() { 
+      let arr = this.props.location.state;
+      let money = 0;
+      arr.map((data)=>{
+        money += data.pprice*data.pnum
       })
+      this.setState({
+        arr:arr,
+        allMoney:money
+      });
     }
 }

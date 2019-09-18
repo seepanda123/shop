@@ -20,7 +20,7 @@ export function _onCreate() {
     app.use(plugin);
   });
   
-  app.model({ namespace: 'data', ...(require('E:/shop/src/models/data.js').default) });
+  app.model({ namespace: 'info', ...(require('E:/shop/src/models/info.js').default) });
   return app;
 }
 

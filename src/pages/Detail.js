@@ -3,6 +3,7 @@ import styles from './detail.css';
 import Api from '../api/api_pro'
 import Link from 'umi/link';
 import {Breadcrumb,Row, Col ,Select ,InputNumber ,Button} from 'antd';
+import { connect } from "dva";
 
 
 const { Option } = Select;
@@ -11,14 +12,14 @@ const cityData = {
   Zhejiang: ['Hangzhou', 'Ningbo', 'Wenzhou'],
   Jiangsu: ['Nanjing', 'Suzhou', 'Zhenjiang'],
 };
-export default class detail extends Component {
+class detail extends Component {
   constructor(props) {
     super(props);
     this.state={
       cities: cityData[provinceData[0]],
       secondCity: cityData[provinceData[0]][0],
       size: 'large',
-      xq:'',
+      xq:{},
       prolist:[],
       pnum:1
     }
@@ -37,7 +38,6 @@ export default class detail extends Component {
 
   };
   onChange(value){
-    console.log('changed', value);
     this.setState({
       pnum:value
     })
@@ -154,19 +154,29 @@ export default class detail extends Component {
     })
   }
   rightnow(pid){
-    let pnum = this.state.pnum;
-    this.props.history.push('/settlement',{pid:pid,pnum:pnum})
+    let arr = this.state.xq;
+    arr.pnum = this.state.pnum;
+    this.props.history.push({pathname:'/settlement',state:[arr]})
   }
   addcart(){
-    let pid = this.props.location.state.pid;
-    let pnum = this.state.pnum;
-    let uid =  JSON.parse(localStorage.getItem("id"))
-    Api.getAddcart({
-      uid:uid,
-      pid:pid,
-      pnum:pnum,
-    }).then(data =>{
-      this.props.history.push("/addCart")
-    })
+    if(localStorage.getItem('xfsc')){
+      let pid = this.props.location.state.pid;
+      let pnum = this.state.pnum;
+      let uid = JSON.parse(localStorage.getItem('id'))
+      Api.getAddcart({
+        uid: uid,
+        pid: pid,
+        pnum: pnum
+      }).then(data => {
+        this.props.dispatch({
+          type: 'info/getData',
+        })
+        this.props.history.push('./addCart')
+      })
+    }else{
+      alert('请登录')
+    }
   }
 }
+
+export default connect(state=>state.info)(detail)

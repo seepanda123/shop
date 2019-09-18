@@ -4,12 +4,13 @@ import 'antd/dist/antd.css';
 import Link from 'umi/link';
 import React,{useState,useEffect} from 'react';
 import api from '../api/api_pro';
+import { connect } from 'dva';
 const { SubMenu } = Menu;
 
 
 
 
-export default function(props) {
+function Index(props) {
   const [list1,setList1] = useState([]);
   const [list2,setList2] = useState([]);
   const [list3,setList3] = useState([]);
@@ -27,6 +28,7 @@ export default function(props) {
       setList4(list4)
     })
   },[props.list1])
+
 
   return (
     <div className={styles.normal}>
@@ -268,4 +270,4 @@ export default function(props) {
   )
 }
 
-
+export default Index;

@@ -46,6 +46,7 @@ export default class login extends Component {
                             </div>
                             <div className={styles.fromInput}>
                                 <Input
+                                    type="text"
                                     placeholder="账号"
                                     onChange={this.Change1.bind(this)}
                                     prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
@@ -54,6 +55,7 @@ export default class login extends Component {
                                 <br/>
                                 <br/>
                                 <Input
+                                    type='password'
                                     placeholder="密码"
                                     onChange={this.Change2.bind(this)}
                                     prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
