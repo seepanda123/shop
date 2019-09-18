@@ -14,7 +14,6 @@ function allIndex(props) {
         return <div>{props.children}</div>;
     }
     const { Search } = Input;
-    const [list,setList] = useState([])
     useEffect(() => {
         props.dispatch({
             type: 'info/getData',
