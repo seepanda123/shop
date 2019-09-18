@@ -174,11 +174,9 @@ export default class detail extends Component {
       pid:pid,
       pnum:pnum
     }).then(data =>{
-<<<<<<<<< Temporary merge branch 1
-      this.props.history.push('./addCart')
-=========
+
       this.props.history.push("/addCart")
->>>>>>>>> Temporary merge branch 2
+
     })
   }
 }

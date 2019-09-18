@@ -135,7 +135,7 @@ export default function(props) {
         <div className={styles.fixedBox}>
             <ul>
                 <li>
-                    <a href="/">
+                    <a href="/cart">
                         <em>0</em>
                         <i className={styles.cartI}></i>
                         <div className={styles.title}>购物车</div>
@@ -157,7 +157,7 @@ export default function(props) {
                         <i className={styles.topI}></i>
                         <div className={styles.title}>TOP</div>
                     </a>
-                </li>
+                </li>   
             </ul>
         </div>
     </div>
