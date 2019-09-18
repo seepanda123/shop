@@ -19,8 +19,15 @@ plugins.init({
     'onRouteChange',
     'modifyInitialProps',
     'initialProps',
+    'dva',
   ],
 });
+plugins.use(
+  require('../../../node_modules/_umi-plugin-dva@1.8.0@umi-plugin-dva/lib/runtime'),
+);
+
+const app = require('@tmp/dva')._onCreate();
+window.g_app = app;
 
 // render
 let clientRender = async () => {
@@ -142,6 +149,8 @@ if (!__IS_BROWSER) {
 
 export { ReactDOMServer };
 export default (__IS_BROWSER ? null : serverRender);
+
+require('../../global.css');
 
 // hot module replacement
 if (__IS_BROWSER && module.hot) {

@@ -3,8 +3,9 @@ import { Empty, Button, PageHeader, InputNumber, Icon } from "antd";
 import Link from "umi/link";
 import React, { useState, useEffect } from "react";
 import api from "../api/api_pro";
+import { connect } from "dva";
 
-export default function (props) {
+function Cart(props) {
   //取购物车数据
   const [cartList, setCartList] = useState([]);
   //多选
@@ -40,6 +41,9 @@ export default function (props) {
         arr[i].pnum = value;
         setCartList(arr);
         allNum(arr);
+        props.dispatch({
+            type: 'info/getData',
+        })
       });
   }
 
@@ -55,6 +59,9 @@ export default function (props) {
         arr.splice(i, 1);
         setCartList(arr);
         allNum(arr);
+        props.dispatch({
+          type: 'info/getData',
+        })
       });
   }
 
@@ -212,10 +219,22 @@ export default function (props) {
                 <span className={styles.allMoney}>￥{allPrice}</span>
               </span>
             </div>
-            <span className={styles.doClear}>结算</span>
+            <span className={styles.doClear} onClick={jie.bind(props)}>结算</span>
           </div>
         </td>
       </td>
     );
   }
+//结算
+  function jie() {
+    let arr = [...cartList];
+    let arr1 = arr.filter(data=>data.flags == true)
+    if (arr1.length<=0){
+      alert('请选择商品')
+    }else{
+      props.history.push({pathname:'/settlement',state:arr1})
+    }
+  }
 }
+
+export default connect(state=>state.info)(Cart)

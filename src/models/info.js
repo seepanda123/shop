@@ -1,11 +1,9 @@
-import api from '../../api/getpro'
+import api from '../api/api_pro'
 
 export default {
   namespace:'info',
   state: {
-    say: '我是你爸爸',
-    age: 25,
-    list:[]
+    cartNum : 0,
   },
   //同步
   reducers: {
@@ -16,11 +14,15 @@ export default {
   //异步
   effects: {
     *getData(payload, { call, put }) {
-      const result = yield call(api.getProList, { uid: 19802 })
+      let num = 0;
+      const result = yield call(api.getCartlist,{id:2019})
+      result.data.map((data)=>{
+        num += data.pnum*1
+      })
       yield put({
         type: 'change',
         payload: {
-          list:result.data
+          cartNum:num
         }
       })
     }
