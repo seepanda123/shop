@@ -60,7 +60,7 @@ const routes = [
       {
         component: () =>
           React.createElement(
-            require('C:/Users/Administrator/AppData/Roaming/npm/node_modules/umi/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+            require('C:/Users/Panda/AppData/Roaming/npm/node_modules/umi/node_modules/_umi-build-dev@1.11.3@umi-build-dev/lib/plugins/404/NotFound.js')
               .default,
             { pagesPath: 'src/pages', hasRoutesInConfig: false },
           ),
@@ -70,7 +70,7 @@ const routes = [
   {
     component: () =>
       React.createElement(
-        require('C:/Users/Administrator/AppData/Roaming/npm/node_modules/umi/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+        require('C:/Users/Panda/AppData/Roaming/npm/node_modules/umi/node_modules/_umi-build-dev@1.11.3@umi-build-dev/lib/plugins/404/NotFound.js')
           .default,
         { pagesPath: 'src/pages', hasRoutesInConfig: false },
       ),

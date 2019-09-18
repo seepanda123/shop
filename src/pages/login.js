@@ -146,16 +146,14 @@ export default class login extends Component {
         let val2 = this.state.val2
 
         Api.login({username:val1,password:val2}).then(data => {
-            console.log(data)
-            let val = data.data.token;
-
             if(data.code==1){
+                let val = data.data.token;
                 localStorage.setItem('xfsc',JSON.stringify(val))
                 localStorage.setItem('id',JSON.stringify(data.data.id))
                 localStorage.setItem('name',JSON.stringify(data.data.username))
                 this.props.history.push("/")
             }else {
-                alert("用户名或者密码错误")
+                alert(data.msg)
             }
         })
 

@@ -20,7 +20,7 @@ export function _onCreate() {
     app.use(plugin);
   });
   
-  app.model({ namespace: 'info', ...(require('E:/shop/src/models/info.js').default) });
+  app.model({ namespace: 'info', ...(require('D:/1905/gogogo/src/models/info.js').default) });
   return app;
 }
 
