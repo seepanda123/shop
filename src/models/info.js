@@ -14,8 +14,10 @@ export default {
   //异步
   effects: {
     *getData(payload, { call, put }) {
-      let num = 0;
-      const result = yield call(api.getCartlist,{id:2018})
+      if(localStorage.getItem('id')){
+        let id = JSON.parse(localStorage.getItem('id'))
+        let num = 0;
+      const result = yield call(api.getCartlist,{id:id})
       result.data.map((data)=>{
         num += data.pnum*1
       })
@@ -25,6 +27,9 @@ export default {
           cartNum:num
         }
       })
+      }
+      
+      
     }
   }
 }

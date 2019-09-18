@@ -16,23 +16,28 @@ function Cart(props) {
   const [allPrice, setAllPrice] = useState("0.00");
 
   useEffect(() => {
-    api.getCartlist({ id: 2018 }).then(data => {
-      data.data.map(list => {
-        if (list.flags) {
-          list.flags = !list.flags;
-        } else {
-          list.flags = false;
+    if (localStorage.getItem("id")){
+      let id = JSON.parse(localStorage.getItem("id"))
+          api.getCartlist({ id: id }).then(data => {
+            data.data.map(list => {
+              if (list.flags) {
+                list.flags = !list.flags;
+              } else {
+                list.flags = false;
+              }
+            });
+            setCartList(data.data);
+          });
         }
-      });
-      setCartList(data.data);
-    });
-  }, []);
+    }
+    , []);
 
   //修改数量
   function onChange(pid, i, value) {
+    let id = JSON.parse(localStorage.getItem("id"))
     api
       .updatedcartnum({
-        uid: 2018,
+        uid: id,
         pid: pid,
         pnum: value
       })
@@ -49,9 +54,10 @@ function Cart(props) {
 
   //删除商品
   function del(pid, i) {
+    let id = JSON.parse(localStorage.getItem("id"))
     api
       .delcartlist({
-        uid: 2018,
+        uid: id,
         pid: pid
       })
       .then(data => {

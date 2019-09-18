@@ -31,6 +31,7 @@
 }
 
 .floatr{
+  display:block;
   float: right;
   margin-right: 320px;
   width: 200px;
@@ -41,13 +42,12 @@
   margin-right: 20px;
 }
 
-
 .anniu a:hover{
   color:#6bc30d;
 }
 
-.nav .phone {
-  float: left;
+.floatr .phone {
+  float: right;
   width: 70px;
   height: 34px;
   line-height: 34px;
@@ -72,6 +72,32 @@
 .nav .phone:hover .erweima {
   display: block;
 }
+
+
+.floatr1{
+  
+  float: right;
+  margin-right: 320px;
+  width: 275px;
+  height: 34px;
+}
+.floatr1 .anniu1{
+  float: left;
+  margin-right: 20px;
+}
+
+.anniu a:hover{
+  color:#6bc30d;
+}
+
+
+
+
+
+
+
+
+
 
 .header {
   position: absolute;
@@ -505,8 +531,6 @@ img {
 .fixedBox ul li .cartI {
   background-position: -88px -214px;
 }
-
-
 .fixedBox ul li.gotop a .title {
   color: #fff;
 }
