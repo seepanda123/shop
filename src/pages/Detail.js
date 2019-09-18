@@ -53,11 +53,6 @@ export default class detail extends Component {
     const { size } = this.state;
       return (
       <div>
-      <Breadcrumb className={styles.nav} separator=">">
-        <Breadcrumb.Item>幸福商城</Breadcrumb.Item>
-        <Breadcrumb.Item href="">原产地</Breadcrumb.Item>
-      </Breadcrumb>
-
       <div>
         <Row className={styles.main}>
           <Col span={8} push={1}>
@@ -120,7 +115,7 @@ export default class detail extends Component {
             {
               this.state.prolist.map((item,i)=>{
                 return(
-                   <Link to={{pathname:"/detail",state:{pid:item.pid}}} key={i} onClick={this.tap.bind(this,item.pid)}>
+                  <Link to={{pathname:"/detail",state:{pid:item.pid}}} key={i} onClick={this.tap.bind(this,item.pid)}>
                     <Col className="gutter-row" span={6}  >
                     <div className={styles.gutterbox}>
                       <img className={styles.img1} src={item.pimg}/>
@@ -128,7 +123,7 @@ export default class detail extends Component {
                       <p className={styles.desc1}>{item.pname}</p>
                     </div>
                     </Col>
-                   </Link>
+                  </Link>
                 )
               })
             }
@@ -141,25 +136,22 @@ export default class detail extends Component {
     let pid = this.props.location.state.pid;
     Api.getProdetail({id:pid}).then(data => {
       this.setState({
-          xq:data.data
+        xq:data.data
       })
     })
-
-    //列表
     Api.getProlist({uid:23255,pagesize:12}).then(data => {
       let arr = data.data;
       this.setState({
         prolist:arr
       })
-    
     })
   }
   tap(p){
-      Api.getProdetail({id:p}).then(data => {
-        this.setState({
-            xq:data.data
-        })
+    Api.getProdetail({id:p}).then(data => {
+      this.setState({
+        xq:data.data
       })
+    })
   }
   rightnow(pid){
     let pnum = this.state.pnum;
@@ -168,17 +160,13 @@ export default class detail extends Component {
   addcart(){
     let pid = this.props.location.state.pid;
     let pnum = this.state.pnum;
-    let uid = 2019
+    let uid =  JSON.parse(localStorage.getItem("id"))
     Api.getAddcart({
       uid:uid,
       pid:pid,
-      pnum:pnum
+      pnum:pnum,
     }).then(data =>{
-<<<<<<<<< Temporary merge branch 1
-      this.props.history.push('./addCart')
-=========
       this.props.history.push("/addCart")
->>>>>>>>> Temporary merge branch 2
     })
   }
 }

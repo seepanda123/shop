@@ -1,4 +1,4 @@
-import api from '../../api/getpro'
+
 
 export default {
   namespace:'info',
@@ -13,16 +13,5 @@ export default {
       return{...state,...payload}
     }
   },
-  //异步
-  effects: {
-    *getData(payload, { call, put }) {
-      const result = yield call(api.getProList, { uid: 19802 })
-      yield put({
-        type: 'change',
-        payload: {
-          list:result.data
-        }
-      })
-    }
-  }
+
 }

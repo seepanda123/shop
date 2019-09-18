@@ -144,19 +144,13 @@ export default class login extends Component {
         let val2 = this.state.val2
 
         Api.login({username:val1,password:val2}).then(data => {
-            //console.log(data)
-            let name = "xfsc";
+            console.log(data)
             let val = data.data.token;
-            let time = 7;
 
-            if(data.msg=="登录成功"){
-                function setCookie (name,val,time) {
-                    //存的名称name,存的值val,存的天数time(过期时间)
-                    let oDate = new Date();
-                    oDate.setDate(oDate.getDate()+time);
-                    document.cookie=name+"="+val+";expires="+oDate;//过期时间
-                }
-                setCookie(name,val,time)
+            if(data.code==1){
+                localStorage.setItem('xfsc',JSON.stringify(val))
+                localStorage.setItem('id',JSON.stringify(data.data.id))
+                localStorage.setItem('name',JSON.stringify(data.data.username))
                 this.props.history.push("/")
             }else {
                 alert("用户名或者密码错误")

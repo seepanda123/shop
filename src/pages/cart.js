@@ -15,7 +15,9 @@ export default function (props) {
   const [allPrice, setAllPrice] = useState("0.00");
 
   useEffect(() => {
-    api.getCartlist({ id: 2019 }).then(data => {
+    //console.log(localStorage.getItem("id"))
+    let id = JSON.parse(localStorage.getItem("id"))
+    api.getCartlist({ id: id }).then(data => {
       data.data.map(list => {
         if (list.flags) {
           list.flags = !list.flags;
@@ -29,9 +31,10 @@ export default function (props) {
 
   //修改数量
   function onChange(pid, i, value) {
+    let id = JSON.parse(localStorage.getItem("id"))
     api
       .updatedcartnum({
-        uid: 2019,
+        uid: id,
         pid: pid,
         pnum: value
       })
@@ -45,9 +48,10 @@ export default function (props) {
 
   //删除商品
   function del(pid, i) {
+    let id = JSON.parse(localStorage.getItem("id"))
     api
       .delcartlist({
-        uid: 2019,
+        uid: id,
         pid: pid
       })
       .then(data => {
