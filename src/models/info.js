@@ -15,7 +15,7 @@ export default {
   effects: {
     *getData(payload, { call, put }) {
       let num = 0;
-      const result = yield call(api.getCartlist,{id:2019})
+      const result = yield call(api.getCartlist,{id:2018})
       result.data.map((data)=>{
         num += data.pnum*1
       })

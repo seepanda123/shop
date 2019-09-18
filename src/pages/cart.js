@@ -16,7 +16,7 @@ function Cart(props) {
   const [allPrice, setAllPrice] = useState("0.00");
 
   useEffect(() => {
-    api.getCartlist({ id: 2019 }).then(data => {
+    api.getCartlist({ id: 2018 }).then(data => {
       data.data.map(list => {
         if (list.flags) {
           list.flags = !list.flags;
@@ -32,7 +32,7 @@ function Cart(props) {
   function onChange(pid, i, value) {
     api
       .updatedcartnum({
-        uid: 2019,
+        uid: 2018,
         pid: pid,
         pnum: value
       })
@@ -51,7 +51,7 @@ function Cart(props) {
   function del(pid, i) {
     api
       .delcartlist({
-        uid: 2019,
+        uid: 2018,
         pid: pid
       })
       .then(data => {
@@ -108,7 +108,7 @@ function Cart(props) {
 
 
   //判断展示============================================
-  if (1 == 2) {
+  if (cartList.length<=0) {
     {/* 购物车为空 */}
     return (
       <div className={styles.warp}>

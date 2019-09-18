@@ -167,19 +167,24 @@ class detail extends Component {
     this.props.history.push({pathname:'/settlement',state:[arr]})
   }
   addcart(){
-    let pid = this.props.location.state.pid;
-    let pnum = this.state.pnum;
-    let uid = 2019
-    Api.getAddcart({
-      uid:uid,
-      pid:pid,
-      pnum:pnum
-    }).then(data =>{
-      this.props.dispatch({
-        type: 'info/getData',
+    if(localStorage.getItem('xfsc')){
+      let pid = this.props.location.state.pid;
+      let pnum = this.state.pnum;
+      let uid = JSON.parse(localStorage.getItem('id'))
+      Api.getAddcart({
+        uid: uid,
+        pid: pid,
+        pnum: pnum
+      }).then(data => {
+        this.props.dispatch({
+          type: 'info/getData',
+        })
+        this.props.history.push('./addCart')
       })
-      this.props.history.push('./addCart')
-    })
+    }else{
+      alert('请登录')
+    }
+    
   }
 }
 
