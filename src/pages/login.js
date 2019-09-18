@@ -46,6 +46,7 @@ export default class login extends Component {
                             </div>
                             <div className={styles.fromInput}>
                                 <Input
+                                    type="text"
                                     placeholder="账号"
                                     onChange={this.Change1.bind(this)}
                                     prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
@@ -145,7 +146,7 @@ export default class login extends Component {
         let val2 = this.state.val2
 
         Api.login({username:val1,password:val2}).then(data => {
-            //console.log(data)
+            console.log(data)
             let name = "xfsc";
             let val = data.data.token;
             let time = 7;
