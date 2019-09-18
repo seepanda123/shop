@@ -193,10 +193,7 @@ function allIndex(props) {
                 </div>
                 <div className={styles.header}>
                     <div className={styles.headercenter}>
-                        <img
-                            src="http://statics.opark.com/css/opark/common/images/logo_cyzg.png"
-                            alt=""
-                        />
+                    <Link to='/'><img src="http://statics.opark.com/css/opark/common/images/logo_cyzg.png"/></Link>
                     </div>
                 </div>
                 <div className={styles.headerMall}>

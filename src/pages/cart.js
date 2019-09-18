@@ -16,19 +16,21 @@ function Cart(props) {
   const [allPrice, setAllPrice] = useState("0.00");
 
   useEffect(() => {
-    //console.log(localStorage.getItem("id"))
-    let id = JSON.parse(localStorage.getItem("id"))
-    api.getCartlist({ id: id }).then(data => {
-      data.data.map(list => {
-        if (list.flags) {
-          list.flags = !list.flags;
-        } else {
-          list.flags = false;
+    if (localStorage.getItem("id")){
+      let id = JSON.parse(localStorage.getItem("id"))
+          api.getCartlist({ id: id }).then(data => {
+            data.data.map(list => {
+              if (list.flags) {
+                list.flags = !list.flags;
+              } else {
+                list.flags = false;
+              }
+            });
+            setCartList(data.data);
+          });
         }
-      });
-      setCartList(data.data);
-    });
-  }, []);
+    }
+    , []);
 
   //修改数量
   function onChange(pid, i, value) {

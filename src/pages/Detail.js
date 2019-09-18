@@ -175,6 +175,7 @@ class detail extends Component {
       })
     }else{
       alert('请登录')
+      this.props.history.push('./login')
     }
   }
 }
