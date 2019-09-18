@@ -18,9 +18,6 @@ function allIndex(props) {
     useEffect(() => {
         props.dispatch({
             type: 'info/getData',
-            payload:{
-                
-            }
         })
     }, [props.cartNum])
 
